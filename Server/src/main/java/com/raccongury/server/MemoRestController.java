@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.raccongury.server.service.MemoService;
 
@@ -21,13 +22,9 @@ public class MemoRestController {
 	@Autowired
 	private MemoService memoService;
 	
-
-//	@RequestMapping(value="url", method=RequestMethod.전송방식)
-//	public Map<String, Object> 메소드이름(HttpServeletRequest request){
-//		return memoService.memolist(request);
-//	}
-	@RequestMapping(value="memo/memolist", method=RequestMethod.GET)
-	public Map<String,Object> 메소드이름(HttpServletRequest request){
+	@RequestMapping(value="memo/memolist", 
+			method=RequestMethod.GET)
+	public Map<String,Object> memolist(HttpServletRequest request){
 		return memoService.memolist(request);
 	}
 	
@@ -36,6 +33,21 @@ public class MemoRestController {
 	public Map<String,Object> memodetail(HttpServletRequest request){
 		return memoService.memodetail(request);
 	}
+	
+	@RequestMapping(value="memo/memodelete", 
+			method=RequestMethod.POST)
+	public Map<String,Object> memodelete(HttpServletRequest request){
+		return memoService.memodelete(request);
+	}
+	
+	@RequestMapping(value="memo/memoinsert", 
+			method=RequestMethod.POST)
+	public Map<String,Object> memoinsert(MultipartHttpServletRequest request){
+		System.out.println("클라이언트 요청");
+		return memoService.memoinsert(request);
+	}
+	
+	
 }
 
 

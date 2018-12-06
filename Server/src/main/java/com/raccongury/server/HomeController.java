@@ -19,19 +19,31 @@ public class HomeController {
 	@Autowired
 	private MemoDAO memoDao;
 	
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home(Locale locale, Model model) {
+//		
+//		Map<String, Object>map = 
+//				new HashMap<String, Object>();
+//		map.put("title", "제목 테스트");
+//		map.put("contents", "내용 테스트");
+//		map.put("regdate", "2018-11-19");
+//		map.put("image_path", "image.png");
+//		
+//		
+//		System.out.println(memoDao.memoinsert(map));
+//		return "home";
+//	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
-		
-		Map<String, Object>map = 
-				new HashMap<String, Object>();
-		map.put("title", "제목 테스트");
-		map.put("contents", "내용 테스트");
-		map.put("regdate", "2018-11-19");
-		map.put("image_path", "image.png");
-		
-		
-		System.out.println(memoDao.memoinsert(map));
 		return "home";
 	}
+	
+	@RequestMapping(value = "memo/insert", 
+			method = RequestMethod.GET)
+	public String insert(Locale locale, Model model) {
+		return "memo/insert";
+	}
+	
 	
 }
